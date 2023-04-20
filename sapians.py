@@ -73,12 +73,3 @@ class Sapians:
     def getTokenContant(self, word):
         return self.const_types[word]
 
-
-if __name__ == "__main__":
-    sap = Sapians()
-    print(sap.isInKeyWords("while"))
-    print(sap.isInKeyWords("whilAe"))
-    print(sap.isInOperators("&&"))
-    print(sap.isInOperators("&"))
-    print(sap.isInConst_types("const_char"))
-    print(sap.isInConst_types("AAA"))

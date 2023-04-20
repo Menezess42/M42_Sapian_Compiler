@@ -2,7 +2,7 @@ from sapians import Sapians
 from my_parser import Parser
 import numpy as np
 
-code = [
+/*code = [
     ["program prog1;"],
     ["int x;"],
     ["float y;"],
@@ -30,7 +30,7 @@ code = [
     [""],
     ["end;"],
 ]
-code2 = [["c = 'a';"], ['s = "hello, world!";']]
+code2 = [["c = 'a';"], ['s = "hello, world!";']]*/
 
 
 # Função que realiza o parsing dos tokens

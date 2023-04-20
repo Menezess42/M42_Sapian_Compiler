@@ -1,4 +1,4 @@
-code = [
+'''code = [
     [
         ("PROGRAM", "program"),
         ("IDENTIFIER", "prog1"),
@@ -122,7 +122,7 @@ code = [
     [("RIGHT_BRACE", "}")],
     [("END", "end"), ("SEMICOLON", ";")],
 ]
-
+'''
 
 class Parser:
     def __init__(self, code):
@@ -300,7 +300,3 @@ class Parser:
             self.msg += "Return 0\n\t"
         return self.msg
 
-
-pas = Parser(code)
-msg = pas.parser()
-print(msg)

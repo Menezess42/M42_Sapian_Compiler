@@ -9,8 +9,7 @@ The mainframe is simple and includes two menu buttons, one for compiling and one
   - The middle area is where you can write Sapian code.
   - The right area shows the code's tokens line by line (which was a requirement from my professor).
   - The bottom area shows any errors.
-  ![image](https://user-images.githubusercontent.com/67249275/233231480-c6b9e3f7-1523-45f0-ae04-f118eafaa0a0.png)
-
+![image](https://user-images.githubusercontent.com/67249275/233232783-50592695-680e-40d7-b5ef-4ecb27067507.png)
 
 ## Installation
 To use the Sapian compiler, you must have Python 3 installed on your system. You can download Python 3 from [official website](https://www.python.org/downloads/).

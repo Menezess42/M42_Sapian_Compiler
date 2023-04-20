@@ -5,15 +5,6 @@ import numpy as np
 from lexerv2 import Lexer
 from my_parser import Parser
 
-###########linguagem#############
-# -> if                         #
-# -> else                       #
-# -> variavel                   #
-# -> int, float, num_cientifico #
-# -> operador relacional        #
-# -> operadores matemáticos     #
-#################################
-
 
 class App(Tk):
     LINES_ABOVE_BELOW = 2
@@ -162,7 +153,6 @@ class App(Tk):
         flag, lexer_list, error_list = lex.lexer()
         token = ""
         errors = ""
-        print(lexer_list)
         for i in range(len(lexer_list)):
             token += f"line: {i+1}\n"
             for l in range(len(lexer_list[i])):
@@ -206,16 +196,6 @@ class App(Tk):
                 msg = "Infelizmente existem alguns erros sintatios e nao podemos continuar a compilacao, corrija os erros abaixo para continuarmos:\n\n" + msg
             self.error_area.insert("end", "".join(str(msg)))
             self.error_area.config(state="disabled")
-
-
-############################################################
-# self.token_area.config(state="disabled")                 #
-# self.error_area.config(state="normal")                   #
-# self.error_area.delete("1.0", "end")                     #
-# self.error_area.insert("end", "".join(str(text_matrix))) #
-# self.error_area.config(state="disabled")                 #
-############################################################
-
 
 app = App()
 app.mainloop()

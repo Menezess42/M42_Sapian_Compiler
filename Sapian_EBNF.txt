@@ -1,0 +1,70 @@
+<programa> ::= "program" <identificador> ";" { <declaracao> } { <comando> } "end" ";"
+<declaracao> ::= ( "char" | "string" | "int" | "float" ) <identificador> ";"
+<comando> ::= <atribuicao> | <estrutura_condicional> | <estrutura_repeticao>
+<atribuicao> ::= <identificador> ":=" <expressao> ";"
+<estrutura_condicional> ::= "if" "(" <expressao> ")" "{" { <comando> } "}" [ "else" "{" { <comando> } "}" ]
+<estrutura_repeticao> ::= ( "for" "(" <identificador> ":=" <expressao> ";" <expressao> ";" <identificador> ":=" <expressao> ")" "{" { <comando> } "}" | "while" "(" <expressao> ")" "{" { <comando> } "}" )
+<expressao> ::= <termo> { ( "+" | "-" | "*" | "/" ) <termo> } { ( "<" | ">" | "<=" | ">=" | "=" | "!=" ) <expressao> }
+<termo> ::= <fator> { ( "+" | "-" | "*" | "/" ) <fator> } { ( "&&" | "||" ) <termo> }
+<fator> ::= <identificador> | <constante> | "(" <expressao> ")"
+<constante> ::= <const_int> | <const_float> | <const_string> | <const_char>
+<const_int> ::= <digito> { <digito> }
+<const_float> ::= <const_int> "." <const_int>
+<const_string> ::= '"' { <caractere> } '"'
+<const_char> ::= "'" <caractere> "'"
+<identificador> ::= ( "a" | "b" | ... | "z" | "A" | "B" | ... | "Z") { "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" |  <digito> }
+<digito> ::= "0" | "1" | ... | "9"
+<caractere> ::= <letra> | <digito> | <simbolo>
+
+
+FIRST e FOLLOW para <programa>:
+FIRST: "program"
+FOLLOW: EOF
+
+FIRST e FOLLOW para <declaracao>:
+FIRST: "char", "string", "int", "float"
+FOLLOW: ";"
+
+FIRST e FOLLOW para <comando>:
+FIRST: <identificador>, "if", "for", "while"
+FOLLOW: "end"
+
+FIRST e FOLLOW para <atribuicao>:
+FIRST: <identificador>
+FOLLOW: ";"
+
+FIRST e FOLLOW para <estrutura_condicional>:
+FIRST: "if"
+FOLLOW: <identificador>, "if", "for", "while", "end"
+
+FIRST e FOLLOW para <estrutura_repeticao>:
+FIRST: "for", "while"
+FOLLOW: <identificador>, "if", "for", "while", "end"
+
+FIRST e FOLLOW para <expressao>:
+FIRST: <termo>
+FOLLOW: ";", ")", "<", ">", "<=", ">=", "=", "!=", "||", "}", ","
+
+FIRST e FOLLOW para <termo>:
+FIRST: <fator>
+FOLLOW: ";", ")", "<", ">", "<=", ">=", "=", "!=", "||", "}", "+", "-", ","
+
+FIRST e FOLLOW para <fator>:
+FIRST: <identificador>, <constante>, "("
+FOLLOW: ";", ")", "<", ">", "<=", ">=", "=", "!=", "||", "}", "+", "-", "*", "/", ","
+
+FIRST e FOLLOW para <constante>:
+FIRST: <const_int>, <const_float>, <const_string>, <const_char>
+FOLLOW: "+", "-", "*", "/", "<", ">", "<=", ">=", "=", "!=", "||", "}", ";", ")", ","
+
+FIRST e FOLLOW para <identificador>:
+FIRST: letra
+FOLLOW: ":=", "+", "-", "*", "/", "<", ">", "<=", ">=", "=", "!=", "||", "}", ";", ")", ","
+
+FIRST e FOLLOW para <digito>:
+FIRST: "0", "1", ..., "9"
+FOLLOW: <identificador>, <constante>, ")", "+", "-", "*", "/", "<", ">", "<=", ">=", "=", "!=", "||", "}", ";", ","
+
+FIRST e FOLLOW para <caractere>:
+FIRST: <letra>, <digito>, <simbolo>
+FOLLOW: "'", <identificador>, <constante>, ")", "+", "-", "*", "/", "<", ">", "<=", ">=", "=", "!=", "||", "}", ";", ","
